@@ -1,3 +1,7 @@
+
+from random import randint
+from time import sleep
+
 VALOR_PEDAGIO_CARRO = 3.5
 VALOR_PEDAGIO_MOTO = 2.75
 
@@ -27,14 +31,32 @@ class Automovel:
         raise NotImplementedError
 
 class Carro(Automovel):
+    def __init__(self, montadora, modelo, alugado):
+        super(Carro, self).__init__(montadora, modelo, alugado)
+        print("O automóvel adquirido foi um carro")
+
+
     def gerar_valor_fatura(self, numeroDePedagios, QuilometrosRodados):
         self.valorFatura = numeroDePedagios * VALOR_PEDAGIO_CARRO + QuilometrosRodados * VALOR_KM_RODADO_CARRO
         print(f"Fatura do carro {self.montadora} {self.modelo} foi R${self.valorFatura}")
 
 class Moto(Automovel):
+    def __init__(self, montadora, modelo, alugado):
+        super(Moto, self).__init__(montadora, modelo, alugado)
+        print("O automóvel adquirido foi um carro")
+
+        
     def gerar_valor_fatura(self, numeroDePedagios, QuilometrosRodados):
         self.valorFatura = numeroDePedagios * VALOR_PEDAGIO_MOTO + QuilometrosRodados * VALOR_KM_RODADO_MOTO
         print(f"Fatura do carro {self.montadora} {self.modelo} foi R${self.valorFatura}")
+
+
+#--------------------------------------------
+
+fiesta = Carro("Ford", "Fiesta", False)
+fiesta.alugar("João")
+
+sleep(randint(7, 10))
 
 
 
